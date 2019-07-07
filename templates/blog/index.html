@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+{% endblock %}
+{% block title %}Blog{% endblock %}
+{% block content %}
+
+    <!-- Presentation -->
+    <div class="container mt-4 d-none d-sm-block">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="display-4">Bienvenue les ami(e)s</h1>
+                <p class="lead">Bienvenue sur mon blog, ici nous allons parler de tout, mais surtout de programmation.</p>
+                <hr class="my-4">
+                <p class="text-center lead">C'est un blog où je vais vous faire part de mes nombreuses découvertes avec le langage Python, peut-être
+                    PHP, mais aussi un peu de JavaScript (la beauté) mais aussi les bases de données. Nous nous tiendrons
+                    aussi au courant des dernières technos pour assouvir notre soif de connaissances !!
+                </p>
+            </div>
+        </div>
+    </div>
+
+<section>
+    <!-- Dernier tickets -->
+    <div class="container last-articles">
+        <h3 class="text-center mb-4">Les derniers articles</h3>
+        <div class="card-deck">
+            {% for article in five_articles %}
+                <div class="card rounded-0" style="width: 18rem;">
+                    <img class="card-img-top rounded-0" src="{{ article.image.url }}" alt="card-logo" style="height:250px">
+                    <div class="card-body">
+                        <p class="small">{{ article.created_at }}</p>
+                        <p class="small">Tag: {{ article.tag }}</p>
+                        <h5 class="card-title">{{ article.title }}</h5>
+                        <p class="card-text">{{ article.short_description|truncatewords_html:20 }}</p>
+                        <a href="{% url 'view_article' slug_article=article.slug %}">Voir l'article</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock %}
+</section>

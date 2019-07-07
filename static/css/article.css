@@ -1,0 +1,12 @@
+.last-articles {
+    margin-top:50px;
+}
+
+.card {
+    transition: all .5s ease-in-out;
+    box-shadow : 0 0 5px black;
+}
+
+.card:hover {
+    transform: scale(1.1)
+}

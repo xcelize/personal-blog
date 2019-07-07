@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+    <div id="paper" class="container">
+        <h3 class="display-4 text-center mt-4"> {{ article.title }} </h3>
+        <div class="container">
+        {% autoescape off %}
+            <div class="text-justify">
+            {{ article.content }}
+            </div>
+        {% endautoescape %}
+        </div>
+    </div>
+{% endblock %}
